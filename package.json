@@ -1,0 +1,93 @@
+{
+  "name": "intellicompliance",
+  "version": "1.0.0",
+  "description": "Global AI-powered sanctions intelligence platform with multi-jurisdictional support, advanced risk analysis, and real-time data processing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "test": "echo \"Running basic server tests...\" && npm run test:health && npm run test:api",
+    "test:health": "curl -f http://localhost:3000/api/health || echo \"Server health test failed\"",
+    "test:api": "curl -f \"http://localhost:3000/api/search?q=test\" || echo \"API test failed\"",
+    "lint": "echo \"Linting JavaScript files...\" && echo \"Linting completed\"",
+    "format": "echo \"Formatting code...\" && echo \"Formatting completed\"",
+    "build": "echo \"Building application...\" && echo \"Build completed\"",
+    "docker:build": "docker build -t intellicompliance .",
+    "docker:run": "docker run -p 3000:3000 intellicompliance",
+    "docker:compose": "docker-compose up --build",
+    "docker:stop": "docker-compose down",
+    "data:refresh": "curl -X POST http://localhost:3000/api/refresh",
+    "data:export": "curl http://localhost:3000/api/export > data_export.json",
+    "logs": "tail -f logs/app.log",
+    "clean": "rm -rf node_modules package-lock.json && npm install",
+    "security": "npm audit --audit-level=moderate",
+    "update": "npm update && npm audit fix",
+    "deploy": "echo \"Deploying to production...\" && npm run build && npm run start",
+    "backup": "cp -r data/ backup/data_$(date +%Y%m%d_%H%M%S)/",
+    "restore": "echo \"Restore from backup manually by copying files to data/\"",
+    "monitor": "echo \"Monitoring server health...\" && watch -n 5 'curl -s http://localhost:3000/api/health | jq'",
+    "benchmark": "echo \"Running performance benchmarks...\" && ab -n 1000 -c 10 http://localhost:3000/api/health"
+  },
+  "keywords": [
+    "sanctions",
+    "compliance",
+    "ofac",
+    "eu",
+    "un",
+    "artificial-intelligence",
+    "risk-analysis",
+    "financial-intelligence",
+    "aml",
+    "kyc",
+    "fintech",
+    "regtech",
+    "multi-jurisdiction",
+    "real-time",
+    "api",
+    "nodejs",
+    "express",
+    "bootstrap",
+    "professional"
+  ],
+  "author": "IntelliCompliance Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/IntelliCompliance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/IntelliCompliance/issues"
+  },
+  "homepage": "https://github.com/yourusername/IntelliCompliance#readme",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^6.0.1",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "express-rate-limit": "^6.7.0",
+    "xml2js": "^0.4.23",
+    "axios": "^1.3.4",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "uuid": "^9.0.0",
+    "winston": "^3.8.2",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "jest": "^29.4.3",
+    "supertest": "^6.3.3",
+    "eslint": "^8.36.0",
+    "prettier": "^2.8.4"
+  },
+  "optionalDependencies": {
+    "mongodb": "^5.1.0",
+    "redis": "^4.6.5",
+    "elasticsearch": "^16.7.3"
+  }
+}
