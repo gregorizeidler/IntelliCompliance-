@@ -1,4 +1,4 @@
-# IntelliCompliance
+# IntelliCompliance 
 
 **Enterprise-Grade Global Sanctions Compliance Platform**
 
